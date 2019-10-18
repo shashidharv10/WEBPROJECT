@@ -77,32 +77,32 @@
 
         <div class="wrap-input100 validate-input" data-validate="ID is required">
           <span class="label-input100">Customer ID</span>
-          <input class="input100" type="text" name="name" placeholder="Enter customer ID">
+          <input class="input100" type="text" name="custid" placeholder="Enter customer ID">
           <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate = "Name is required">
           <span class="label-input100">Name</span>
-          <input class="input100" type="text" name="email" placeholder="Enter your name">
+          <input class="input100" type="text" name="name" placeholder="Enter your name">
           <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Phone number is required">
           <span class="label-input100">Phone Number</span>
-          <input class="input100" type="text" name="name" placeholder="Enter phone number">
+          <input class="input100" type="text" name="phone" placeholder="Enter phone number">
           <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate = "Employee ID required">
           <span class="label-input100">Employee ID</span>
-          <input class="input100" type="text" name="email" placeholder="Enter Employee ID">
+          <input class="input100" type="text" name="empid" placeholder="Enter Employee ID">
           <span class="focus-input100"></span>
         </div>
 
         
         <div class="wrap-input100 validate-input" data-validate = "Address is required">
           <span class="label-input100">Address</span>
-          <textarea class="input100" name="message" placeholder="Your address here..."></textarea>
+          <textarea class="input100" name="address" placeholder="Your address here..."></textarea>
           <span class="focus-input100"></span>
         </div>
 
@@ -165,4 +165,5 @@
 	<input type='submit' value = 'BACK'>
 	</form>
 <?php include('footer.php'); ?>
+
 

@@ -23,6 +23,3 @@
 	</div>
 	<div class ="Content"> 
 	<div class = "left">
-	<br>
-	<br>
-
