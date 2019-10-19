@@ -146,24 +146,8 @@
 <!--===============================================================================================-->
   <script src="ContactForm/js/main.js"></script>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-
-  <!--<TITLE>Add Customer</TITLE>
-	     <center><h2 Class= "Header2"><font color="white">ADD CUSTOMER</font></h2></center>
-             <center><h3 Class= "Header2"><font color="white">ENTER DETAILS</font></h3></center>
-       <form action = "" method = "post">
-                  <center><label><font color="white">CUSTOMER ID :</font></label><input type = "text" name = "custid" class = "box"/></center><br /><br />
-                  <center><label><font color="white">NAME  :</font></label><input type = "text" name = "name" class = "box"/></center><br /><br />
-                  <center><label><font color="white">PHONE :</font></label><input type = "text" name = "phone" class = "box"/></center><br /><br />
-                  <center><label><font color="white">ADDRESS  :</font></label><input type = "text" name = "address" class = "box"/></center><br /><br />
-		  <center><label><font color="white">EMPLOYEE ID  :</font></label><input type = "text" name = "empid" class = "box"/></center><br /><br />
-                  <center><input type = "submit" value = " SUBMIT"/></center><br />
-               </form>-->
+  
 		<form method='GET' action='custinfemp.php'>
 	<input type='submit' value = 'BACK'>
 	</form>
 <?php include('footer.php'); ?>
-
-
