@@ -1,10 +1,9 @@
-<?php
-session_start();
- include('header.php');
-?>
+<?php   session_start();?>
+
+<?php include('header.php');?>
 
 <head>
-	<title>Billing</title>
+	<title>Customer Information</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -27,22 +26,38 @@ session_start();
 
 
 <?php
-	include('db.php'); 
-	if(isset($_GET["custid"]))
+   //To initiate connection db.php contains connection to nursery details
+   include("db.php");
+
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+      $mcustid = mysqli_real_escape_string($conn,$_POST['custid']);
+
+      $mphone = mysqli_real_escape_string($conn,$_POST['phone']);
+     // $mcolour = mysqli_real_escape_string($conn,$_POST['colour']);
+       if($mcustid == '' && $mphone == '') 
+      {	
+	$sql = "SELECT * FROM customer";
+      }
+     else  if($mcustid !='' && $mphone == '')
+      {
+     	 $sql = "SELECT * FROM customer WHERE CID='$mcustid'  ";
+      }
+      
+      else if($mphone !='' && $mcustid == '')
 	{
-	 $mcustid = mysqli_real_escape_string($conn,$_GET['custid']);
-	 //echo "$mcustid";
-	 $sql = "SELECT * FROM customer WHERE CID = '$mcustid'";
-	 $result = mysqli_query($conn,$sql);
-	 $num = mysqli_num_rows($result);
-	 if($num > 0)
-      	{
-		echo "<div class='limiter'>
+		 $sql = "SELECT * FROM customer WHERE Phno =$mphone ";
+	}
+      $result = mysqli_query($conn,$sql);
+      $num = mysqli_num_rows($result);
+      if($num > 0)
+      {
+			echo "<div class='limiter'>
 		<div class='container-table100'>
 			<div class='wrap-table100'>
 				<div class='table100'>
 					<span class='contact100-table-title'>
-          			VERIFY CUSTOMER DETAILS
+          			CUSTOMER DETAILS
         			</span>
 					<table>
 						<thead>
@@ -50,19 +65,20 @@ session_start();
 								<th class='column1'>CUSTOMER ID</th>
 								<th class='column1'>NAME</th>
 								<th class='column1'>PHONE</th>
-								<th class='column1'>ADDRESS</th>
-								<th class='column2'>EMPLOYEE ASSOCIATED</th>
+								<th class='column2'>UPDATE PHONE NO</th>
+								<th class='column1'>DELETE</th>
 							</tr>
 						</thead>
 						<tbody>";
-		while ($row = mysqli_fetch_array($result)) {
 
-		echo "<tr>
+			while($row = mysqli_fetch_array($result))
+			{
+				echo "<tr>
 					<td class='column1'>".$row['CID']."</td>
 					<td class='column1'>".$row['Name']."</td>
 					<td class='column1'>".$row['Phno'] ."</td>
-					<td class='column1'>".$row['Address']."</td>
-					<td class='column1'>".$row['EID'] ."</td>
+					<td class='column1'><form action='editnumber.php' method='GET'><input type='hidden' name='edit' value='".$row["CID"]."'/><input type='submit' name='submit-btn' value='UPDATE' /></form></td>
+					<td class='column1'><form action= 'deletecust.php'  method='GET'><input type='hidden' name='edit' value='".$row["CID"]."'/><input type='submit' name='submit-btn' value = 'DELETE CUSTOMER' /></form></td>
 				</tr>";
 		}
 		echo "	</tbody>
@@ -71,24 +87,11 @@ session_start();
 				</div>
 				</div>";
 	}
-	 $_SESSION["name"] = $_GET["custid"]; 
-	 $_SESSION["new"] = $_GET["newid"];
- 	}
-	if(isset($_GET["newid"]))
-	{
-	
-	 $_SESSION["new"] = $_GET["newid"];
- 	}
-	
-	
-	$id = $_SESSION["name"];	
-	$newid = $_SESSION["new"];
- 
-	echo "<center><form method='GET' action='index2.php'>
-    		<input type='hidden' name='name' value='$id'>
-		<input type= 'hidden' name ='newid' value='$newid'>
-    		<input type='submit' align ='middle' value = 'CONTINUE'>
-		</form></center>";
+	else {
+		$message = "Error Occured !!\\nTry Again.";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+	}
+}
 ?>
 
 <!--===============================================================================================-->	
@@ -101,8 +104,7 @@ session_start();
 <!--===============================================================================================-->
 	<script src="Table/js/main.js"></script>
 
-	
-<form method='GET' action='Staff.php'>
+<form method='GET' action='updateCustEmp.php'>
 	<input type='submit' value = 'BACK'>
-	</form>
-<?php include('footer.php'); ?>
+</form>
+<?php include('footer.php');?>

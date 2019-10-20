@@ -1,4 +1,3 @@
-<TITLE>Edit Plant</TITLE>
 <?php
 
 	include('db.php');

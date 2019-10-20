@@ -1,9 +1,8 @@
-<?php   session_start();?>
+<?php include('header.php'); ?> 
 
-<?php include('header.php');?>
 
 <head>
-	<title>All Info</title>
+	<title>Bill Window</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -23,63 +22,51 @@
 	<link rel="stylesheet" type="text/css" href="Table/css/main.css">
 <!--===============================================================================================-->
 </head>
+<?php 
+include("db.php");
+	
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$query  = "SELECT MAX(TID) FROM transaction";
+		$result  =  mysqli_query($conn,$query);
+		$row =  mysqli_fetch_array($result);
+		$maxId = $row["MAX(TID)"];
+		$newID =  $maxId + 1;
+		$_SESSION["new"] = $newID;
 
-<?php
-   //To initiate connection db.php contains connection to nursery details
-   include("db.php");
-
-      $sql = "SELECT * FROM transaction";
- 
-      $result = mysqli_query($conn,$sql);
-      $num = mysqli_num_rows($result);
-      if($num > 0)
-      {
-		echo "<div class='limiter'>
-		<div class='container-table100'>
-			<div class='wrap-table100'>
-				<div class='table100'>
-					<span class='contact100-table-title'>
-          			TRANSACTION DETAILS
-        			</span>
-					<table>
-						<thead>
-							<tr class='table100-head'>
-								<th class='column1'>TRANSACTION ID</th>
-								<th class='column1'>CUSTOMER ID</th>
-								<th class='column1'>PLANT ID</th>
-								<th class='column1'>QUANTITY</th>
-								<th class='column1'>DATE OF TRANSACTION</th>
-								<th class='column1'>AMOUNT</th>
-							</tr>
-						</thead>
-						<tbody>";
-
-	while($row = mysqli_fetch_array($result))
+      $mcustid = mysqli_real_escape_string($conn,$_POST['custid']);
+      if($mcustid == '')
+      {	
+		$message = "Enter Customer ID or Add New Customer.\\nTry again.";
+  		echo "<script type='text/javascript'>alert('$message');</script>";
+      }
+     else{
+     	 $sql = "SELECT * FROM customer where CID='$mcustid'";
+      	 $result = mysqli_query($conn,$sql);
+     	 $num = mysqli_num_rows($result);
+ $id = $_SESSION["new"] ;
+	 if($num > 0)
 	{
-		echo "<tr>
-					<td class='column1'>".$row['TID']."</td>
-					<td class='column1'>".$row['CID']."</td>
-					<td class='column1'>".$row['PID'] ."</td>
-					<td class='column1'>".$row['Qty']."</td>
-					<td class='column1'>".$row['Dateoftrans'] ."</td>
-					<td class='column1'>".$row['Amount'] ."</td>
-				</tr>";
-			}
-
-		echo "	</tbody>
-				</table>
-				</div>
-				</div>
-				</div>";
+		$message = "Customer Verified.\\n Click Continue";
+  		echo "<script type='text/javascript'>alert('$message');</script>";	
+		echo "<form method='GET' action='bill.php'>
+    		<input type='hidden' name='custid' value='$mcustid'>
+		<input type='hidden' name='newid' value='$id'>
+    		<input type='submit' value = 'CONTINUE'>
+		</form>";
+	
+	
 	}
-
-	else {
-		$message = "Error!!\\n No Entires Exist!!" ;
-		echo "<script type='text/javascript'>alert('$message');</script>";
+	else
+	{
+		$message = "Customer ID not in Database.\\nTry again.";
+  		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
-
+      
+	}
+}
 ?>
-<form method='GET' action='Transaction.php'>
+
+<form method='GET' action='CustomerInfo.php'>
 	<input type='submit' value = 'BACK'>
 </form>
 <?php include('footer.php'); ?>

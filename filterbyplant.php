@@ -1,10 +1,7 @@
-<?php
-session_start();
- include('header.php');
-?>
+<?php include('header.php');?>
 
 <head>
-	<title>Billing</title>
+	<title>Filter By Plant</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -25,70 +22,63 @@ session_start();
 <!--===============================================================================================-->
 </head>
 
-
 <?php
-	include('db.php'); 
-	if(isset($_GET["custid"]))
-	{
-	 $mcustid = mysqli_real_escape_string($conn,$_GET['custid']);
-	 //echo "$mcustid";
-	 $sql = "SELECT * FROM customer WHERE CID = '$mcustid'";
-	 $result = mysqli_query($conn,$sql);
-	 $num = mysqli_num_rows($result);
-	 if($num > 0)
-      	{
+   //To initiate connection db.php contains connection to nursery details
+   include("db.php");
+
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+      $mitem = mysqli_real_escape_string($conn,$_POST['item']);
+      $sql = "SELECT * FROM transaction where PID = '$mitem'  ";
+ 
+      $result = mysqli_query($conn,$sql);
+      $num = mysqli_num_rows($result);
+      if($num > 0)
+      {
 		echo "<div class='limiter'>
 		<div class='container-table100'>
 			<div class='wrap-table100'>
 				<div class='table100'>
 					<span class='contact100-table-title'>
-          			VERIFY CUSTOMER DETAILS
+          			TRANSACTION DETAILS
         			</span>
 					<table>
 						<thead>
 							<tr class='table100-head'>
+								<th class='column1'>TRANSACTION ID</th>
 								<th class='column1'>CUSTOMER ID</th>
-								<th class='column1'>NAME</th>
-								<th class='column1'>PHONE</th>
-								<th class='column1'>ADDRESS</th>
-								<th class='column2'>EMPLOYEE ASSOCIATED</th>
+								<th class='column1'>PLANT ID</th>
+								<th class='column1'>QUANTITY</th>
+								<th class='column1'>DATE OF TRANSACTION</th>
+								<th class='column1'>AMOUNT</th>
 							</tr>
 						</thead>
 						<tbody>";
-		while ($row = mysqli_fetch_array($result)) {
 
+	while($row = mysqli_fetch_array($result))
+	{
 		echo "<tr>
+					<td class='column1'>".$row['TID']."</td>
 					<td class='column1'>".$row['CID']."</td>
-					<td class='column1'>".$row['Name']."</td>
-					<td class='column1'>".$row['Phno'] ."</td>
-					<td class='column1'>".$row['Address']."</td>
-					<td class='column1'>".$row['EID'] ."</td>
+					<td class='column1'>".$row['PID'] ."</td>
+					<td class='column1'>".$row['Qty']."</td>
+					<td class='column1'>".$row['Dateoftrans'] ."</td>
+					<td class='column1'>".$row['Amount'] ."</td>
 				</tr>";
-		}
+			}
+
 		echo "	</tbody>
 				</table>
 				</div>
 				</div>
 				</div>";
+
 	}
-	 $_SESSION["name"] = $_GET["custid"]; 
-	 $_SESSION["new"] = $_GET["newid"];
- 	}
-	if(isset($_GET["newid"]))
-	{
-	
-	 $_SESSION["new"] = $_GET["newid"];
- 	}
-	
-	
-	$id = $_SESSION["name"];	
-	$newid = $_SESSION["new"];
- 
-	echo "<center><form method='GET' action='index2.php'>
-    		<input type='hidden' name='name' value='$id'>
-		<input type= 'hidden' name ='newid' value='$newid'>
-    		<input type='submit' align ='middle' value = 'CONTINUE'>
-		</form></center>";
+
+	else{
+		$message = "Error no such entry!!\\nTry Again";
+  		echo "<script type='text/javascript'>alert('$message');</script>" ;}
+}
 ?>
 
 <!--===============================================================================================-->	
@@ -101,8 +91,8 @@ session_start();
 <!--===============================================================================================-->
 	<script src="Table/js/main.js"></script>
 
-	
-<form method='GET' action='Staff.php'>
+
+<form method='GET' action='Transaction.php'>
 	<input type='submit' value = 'BACK'>
-	</form>
+</form>
 <?php include('footer.php'); ?>

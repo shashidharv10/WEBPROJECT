@@ -1,4 +1,4 @@
-<TITLE>Edit Employee</TITLE>
+
 <?php
 
 	include('db.php');
@@ -11,7 +11,6 @@
 ?>
 <?php include('header.php');?>
 
-<?php include('header.php');?>
 <head>
 <title>Edit Customer</title>
   <meta charset="UTF-8">
@@ -101,13 +100,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		//$price  	 = $_POST['newprice'];
 		$sql     = "UPDATE employee SET PhNo=$number  WHERE EID='$id'";
 		$res 	 = mysqli_query($conn,$sql);
-			$message = "UPDATE SUCCESSFUL";
+			$message = "Update Successful";
   		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
  
 ?>
 
-<form method='GET' action='empinf.php'>
+<form method='GET' action='custinfemp.php'>
 	<input type='submit' value = 'BACK'>
 </form>
 <?php include('footer.php');?>

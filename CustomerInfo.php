@@ -127,11 +127,23 @@ include("db.php");
 	{
 		$message = "Customer Verified.\\n Click Continue";
   		echo "<script type='text/javascript'>alert('$message');</script>";	
-		echo "<form method='GET' action='bill.php'>
-    		<input type='hidden' name='custid' value='$mcustid'>
-		<input type='hidden' name='newid' value='$id'>
-    		<input type='submit' value = 'CONTINUE'>
-		</form>";
+		
+    echo "<form class='contact100-form validate-form' action='bill.php'>
+        <div class='container-contact100-form-btn'>
+          <div class='wrap-contact100-form-btn'>
+            <div class='contact100-form-bgbtn'></div>
+            <input type='hidden' name='custid' value='$mcustid'>
+            <input type='hidden' name='newid' value='$id'>
+            <button class='contact100-form-btn' type='submit'>
+              <span>
+                Continue
+              </span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>";
 	
 	
 	}
