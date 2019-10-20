@@ -1,6 +1,28 @@
 <?php include('header.php');?>
-<TITLE>Employee Information</TITLE>
-<center><h2><font color='white'>EMPLOYEE DETAILS</font></h2></center>
+
+<head>
+	<title>Plant Information</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="Table/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================Table/================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/css/util.css">
+	<link rel="stylesheet" type="text/css" href="Table/css/main.css">
+<!--===============================================================================================-->
+</head>
+
+
 <?php
 	include("db.php");
 	$sql = "SELECT * FROM employee";
@@ -8,29 +30,43 @@
         $num = mysqli_num_rows($result);
 	if($num > 0)
       	{
-		echo "<table border='5' bordercolor='white' style='width:100%' cellspacing='10'>
-		<tr>
-		<th><font color='white'>EMPLOYEE ID</font></th>
-		<th><font color='white'>NAME</font></th>
-		<th><font color='white'>PHONE</font></th>
-		<th><font color='white'>SALARY</font></th>
-		<th><font color='white'>ADDRESS</font></th>
-		<th><font color='white'>DEPARTMENT ID</font></th>
-		</tr>";
+
+      		echo "<div class='limiter'>
+		<div class='container-table100'>
+			<div class='wrap-table100'>
+				<div class='table100'>
+					<span class='contact100-table-title'>
+          			EMPLOYEE DETAILS
+        			</span>
+					<table>
+						<thead>
+							<tr class='table100-head'>
+								<th class='column1'>EMPLOYEE ID</th>
+								<th class='column1'>NAME</th>
+								<th class='column1'>PHONE</th>
+								<th class='column1'>SALARY</th>
+								<th class='column1'>ADDRESS</th>
+								<th class='column1'>DEPARTMENT</th>
+							</tr>
+						</thead>
+						<tbody>";
 
 		while($row = mysqli_fetch_array($result))
 		{
-			echo "<tr>";
-			echo "<td><font color='white'>" . $row['EID']."</font></td>";
-			echo "<td><font color='white'>" . $row['Name'] . "</font></td>";
-			echo "<td><font color='white'>" . $row['Phno'] . "</font></td>";
-			echo "<td><font color='white'>" . $row['Salary'] . "</font></td>";
-			echo "<td><font color='white'>" . $row['Address'] . "</font></td>";
-			echo "<td><font color='white'>" . $row['DID'] . "</font></td>";
-
-			echo "</tr>";
+			echo "<tr>
+					<td class='column1'>".$row['EID']."</td>
+					<td class='column1'>".$row['Name']."</td>
+					<td class='column1'>".$row['Phno'] ."</td>
+					<td class='column1'>".$row['Salary']."</td>
+					<td class='column1'>".$row['Address'] ."</td>
+					<td class='column1'>".$row['DID'] ."</td>
+				</tr>";
 		}
-		echo "</table>";
+		echo "	</tbody>
+				</table>
+				</div>
+				</div>
+				</div>";
 	}
 	else {
 	$message = "Error Occured !!\\nTry Again.";
@@ -38,7 +74,17 @@
 	}
 ?>
 
-<?php include('footer.php');?>
-<br /><form method='GET' action='empinf.php'>
+<!--===============================================================================================-->	
+	<script src="Table/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="Table/vendor/bootstrap/js/popper.js"></script>
+	<script src="Table/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="Table/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="Table/js/main.js"></script>
+
+<form method='GET' action='empinf.php'>
 	<input type='submit' value = 'BACK'>
 </form>
+<?php include('footer.php');?>

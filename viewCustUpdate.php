@@ -1,6 +1,5 @@
 <?php   session_start();?>
 
-
 <?php include('header.php');?>
 
 <head>
@@ -25,14 +24,36 @@
 <!--===============================================================================================-->
 </head>
 
+
 <?php
-	include("db.php");
+   //To initiate connection db.php contains connection to nursery details
+   include("db.php");
+
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+      $mcustid = mysqli_real_escape_string($conn,$_POST['custid']);
+
+      $mphone = mysqli_real_escape_string($conn,$_POST['phone']);
+     // $mcolour = mysqli_real_escape_string($conn,$_POST['colour']);
+       if($mcustid == '' && $mphone == '') 
+      {	
 	$sql = "SELECT * FROM customer";
- 	$result = mysqli_query($conn,$sql);
-        $num = mysqli_num_rows($result);
-        if($num > 0)
-        {
-        	echo "<div class='limiter'>
+      }
+     else  if($mcustid !='' && $mphone == '')
+      {
+     	 $sql = "SELECT * FROM customer WHERE CID='$mcustid'  ";
+      }
+      
+      else if($mphone !='' && $mcustid == '')
+	{
+		 $sql = "SELECT * FROM customer WHERE Phno =$mphone ";
+	}
+      $result = mysqli_query($conn,$sql);
+      $num = mysqli_num_rows($result);
+      if($num > 0)
+      {
+
+      	echo "<div class='limiter'>
 		<div class='container-table100'>
 			<div class='wrap-table100'>
 				<div class='table100'>
@@ -45,22 +66,22 @@
 								<th class='column1'>CUSTOMER ID</th>
 								<th class='column1'>NAME</th>
 								<th class='column1'>PHONE</th>
-								<th class='column1'>ADDRESS</th>
-								<th class='column2'>EMPLOYEE ASSOCIATED</th>
+								<th class='column2'>UPDATE PHONE NO</th>
+								<th class='column1'>DELETE</th>
 							</tr>
 						</thead>
 						<tbody>";
 
-		while($row = mysqli_fetch_array($result))
-		{
-			echo "<tr>
+	while($row = mysqli_fetch_array($result))
+	{
+		echo "<tr>
 					<td class='column1'>".$row['CID']."</td>
 					<td class='column1'>".$row['Name']."</td>
 					<td class='column1'>".$row['Phno'] ."</td>
-					<td class='column1'>".$row['Address']."</td>
-					<td class='column1'>".$row['EID'] ."</td>
+					<td class='column1'><form action='editnumber.php' method='GET'><input type='hidden' name='edit' value='".$row["CID"]."'/><input type='submit' name='submit-btn' value='UPDATE' /></form></td>
+					<td class='column1'><form action= 'deletecust.php'  method='GET'><input type='hidden' name='edit' value='".$row["CID"]."'/><input type='submit' name='submit-btn' value = 'DELETE CUSTOMER' /></form></td>
 				</tr>";
-		}
+	}
 		echo "	</tbody>
 				</table>
 				</div>
@@ -68,9 +89,10 @@
 				</div>";
 	}
 	else {
-		$message = "No Records Exist !!\\nTry Again.";
+		$message = "Error Occured !!\\nTry Again.";
 		echo "<script type='text/javascript'>alert('$message');</script>";
 	}
+}
 ?>
 
 <!--===============================================================================================-->	
@@ -84,7 +106,7 @@
 	<script src="Table/js/main.js"></script>
 
 
-<form method='GET' action='custinfemp.php'>
+<form method='GET' action='updateCust.php'>
 	<input type='submit' value = 'BACK'>
 </form>
 <?php include('footer.php');?>

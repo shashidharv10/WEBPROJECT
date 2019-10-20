@@ -31,7 +31,7 @@
 
   <div class="container-contact100">
     <div class="wrap-contact100">
-      <form class="contact100-form validate-form" action="" method="post">
+      <form class="contact100-form validate-form" action="viewCustUpdate.php" method="post">
         <span class="contact100-form-title">
           Update Customer Info
         </span>
@@ -59,12 +59,11 @@
             </button>
           </div>
         </div>
+      </form>
 
         <span class="contact100-form-title">
           Just Press Search To View The Entire List
         </span>
-
-      </form>
     </div>
   </div>
 
@@ -93,62 +92,7 @@
 <!--===============================================================================================-->
   <script src="ContactForm/js/main.js"></script>
 
-<?php
-   //To initiate connection db.php contains connection to nursery details
-   include("db.php");
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-      $mcustid = mysqli_real_escape_string($conn,$_POST['custid']);
-
-      $mphone = mysqli_real_escape_string($conn,$_POST['phone']);
-     // $mcolour = mysqli_real_escape_string($conn,$_POST['colour']);
-       if($mcustid == '' && $mphone == '') 
-      {	
-	$sql = "SELECT * FROM customer";
-      }
-     else  if($mcustid !='' && $mphone == '')
-      {
-     	 $sql = "SELECT * FROM customer WHERE CID='$mcustid'  ";
-      }
-      
-      else if($mphone !='' && $mcustid == '')
-	{
-		 $sql = "SELECT * FROM customer WHERE Phno =$mphone ";
-	}
-      $result = mysqli_query($conn,$sql);
-      $num = mysqli_num_rows($result);
-      if($num > 0)
-      {
-	echo "<table border='5' bordercolor='white' style='width:100%' cellspacing='5'>
-	<tr>
-	<th><font color='white'>CUSTOMER ID</font></th>
-	<th><font color='white'>NAME</font></th>
-	<th><font color='white'>PHONE</font></th>
-	<th><font color='white'>UPDATE PHONE NO</font></th>
-	<th><font color='white'>DELETE</font></th>
-	</tr>";
-
-	while($row = mysqli_fetch_array($result))
-	{
-		echo "<tr>";
-		echo "<td><font color='white'>" . $row['CID']."</font></td>";
-		echo "<td><font color='white'>" . $row['Name'] . "</font></td>";
-		echo "<td><font color='white'>" . $row['Phno'] . "</font></td>";
-		echo "<td><form action='editnumber.php' method='GET'><input type='hidden' name='edit' value='".$row["CID"]."'/><input type='submit' name='submit-btn' value='UPDATE' /></form></td>";
-		echo "<td><form action= 'deletecust.php'  method='GET'><input type='hidden' name='edit' value='".$row["CID"]."'/><input type='submit' name='submit-btn' value = 'DELETE CUSTOMER' /></form></td>";
-
-		echo "</tr>";
-	}
-		echo "</table>";
-	}
-	else {
-		$message = "Error Occured !!\\nTry Again.";
-		echo "<script type='text/javascript'>alert('$message');</script>";
-	}
-}
-?>
-<br>
 <form method='GET' action='custinf.php'>
 <input type='submit' value = 'BACK'>
 		</form>

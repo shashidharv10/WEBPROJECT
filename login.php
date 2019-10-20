@@ -74,8 +74,8 @@
 					Sign In
 				</span>
 
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
-					<input class="input100" type="text" name="username" placeholder="username or email">
+				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter username">
+					<input class="input100" type="text" name="username" placeholder="username">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -97,11 +97,11 @@
 				</div>
 
 				<div class="flex-c p-b-112">
-					<a href="#" class="login100-social-item">
+					<a href="https://facebook.com" class="login100-social-item">
 						<i class="fa fa-facebook-f"></i>
 					</a>
 
-					<a href="#" class="login100-social-item">
+					<a href="https://gmail.com" class="login100-social-item">
 						<img src="Login/images/icons/icon-google.png" alt="GOOGLE">
 					</a>
 				</div>

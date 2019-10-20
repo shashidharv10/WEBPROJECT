@@ -1,8 +1,30 @@
 <?php   session_start();?>
-<TITLE>Customer Information</TITLE>
+
 <?php include('header.php');?>
-<TITLE>Customer Info</TITLE>
-<center><h2><font color='white'>PLANT DETAILS</font></h2></center>
+
+<head>
+	<title>Plant Information</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="Table/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================Table/================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="Table/css/util.css">
+	<link rel="stylesheet" type="text/css" href="Table/css/main.css">
+<!--===============================================================================================-->
+</head>
+
+
 <?php
 	include("db.php");
 	$sql = "SELECT * FROM plant";
@@ -10,33 +32,48 @@
         $num = mysqli_num_rows($result);
         if($num > 0)
         {
-		echo "<table border='5' bordercolor='white' style='width:100%' cellspacing='10'>
-		<tr>
-		<th><font color='white'><b>PLANT ID</b></font></th>
-		<th><font color='white'><b>NAME</b></font></th>
-		<th><font color='white'><b>SCIENTIFIC NAME</b></font></th>
-		<th><font color='white'><b>COLOR</b></font></th>
-		<th><font color='white'><b>DATE OF SOWING</b></font></th>
-		<th><font color='white'><b>COST</b></font></th>
-		<th><font color='white'><b>STAGE</b></font></th>
-		<th><font color='white'><b>QUANTITY</b></font></th>
-		</tr>";
+
+        	echo "<div class='limiter'>
+		<div class='container-table100'>
+			<div class='wrap-table100'>
+				<div class='table100'>
+					<span class='contact100-table-title'>
+          			PLANT DETAILS
+        			</span>
+					<table>
+						<thead>
+							<tr class='table100-head'>
+								<th class='column1'>PLANT ID</th>
+								<th class='column1'>NAME</th>
+								<th class='column1'>SCIENTIFIC NAME</th>
+								<th class='column1'>COLOR</th>
+								<th class='column1'>DATE OF SOWING</th>
+								<th class='column1'>COST</th>
+								<th class='column2'>STAGE</th>
+								<th class='column1'>QUANTITY</th>
+							</tr>
+						</thead>
+						<tbody>";
 
 		while($row = mysqli_fetch_array($result))
 		{
-			echo "<tr>";
-			echo "<td align='center'><font color='white'>" . $row['PID']."</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['Name'] . "</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['ScName'] . "</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['Colour'] . "</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['Dateofsowing'] . "</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['Cost'] . "</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['Stage'] . "</font></td>";
-			echo "<td align='center'><font color='white'>" . $row['Qty'] . "</font></td>";
 
-			echo "</tr>";
+			echo "<tr>
+					<td class='column1'>".$row['PID']."</td>
+					<td class='column1'>".$row['Name']."</td>
+					<td class='column1'>".$row['ScName'] ."</td>
+					<td class='column1'>".$row['Colour']."</td>
+					<td class='column1'>".$row['Dateofsowing'] ."</td>
+					<td class='column1'>".$row['Cost'] ."</td>
+					<td class='column1'>".$row['Stage'] ."</td>
+					<td class='column1'>".$row['Qty'] ."</td>
+				</tr>";
 		}
-		echo "</table>";
+		echo "	</tbody>
+				</table>
+				</div>
+				</div>
+				</div>";
 	}
 	else {
 		$message = "No Records Exist !!\\nTry Again.";
@@ -44,7 +81,17 @@
 	}
 ?>
 
-<?php include('footer.php');?>
-<br /><form method='GET' action='updatePlant.php'>
+<!--===============================================================================================-->	
+	<script src="Table/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="Table/vendor/bootstrap/js/popper.js"></script>
+	<script src="Table/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="Table/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="Table/js/main.js"></script>
+
+<form method='GET' action='updatePlant.php'>
 	<input type='submit' value = 'BACK'>
 </form>
+<?php include('footer.php');?>

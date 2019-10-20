@@ -1,5 +1,5 @@
 
-<?php #include('loginf.php'); 
+<?php
 
 ?>
 
@@ -18,8 +18,12 @@
 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button>
 		</form>
 	</nav>
+	<!--
 	<div class = "Header" >
 		<h1 class = Heading><center><font color="white"> </center></font></h1>
 	</div>
 	<div class ="Content"> 
 	<div class = "left">
+	<br>
+	<br>-->
+

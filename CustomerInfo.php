@@ -1,33 +1,106 @@
-<html>
+
+<?php include('header.php'); ?> 
+  
+
 <title>Customer Details</title>
-<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="ContactForm/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/vendor/animate/animate.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="ContactForm/css/util.css">
+  <link rel="stylesheet" type="text/css" href="ContactForm/css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-<?php include('header.php'); ?>
-	<center><h2><font color="white">ENTER THE CUSTOMER DETAILS TO PROCEED WITH ORDER</font></h2></center>
-	<p>
-	<form action = "" method = "post">
-		<center><label><font color="white">CUSTOMER ID :</font></label><input type = "text" name = "custid" class = "box"/></center><br /><br />
-		<center><input type="submit" value="SUBMIT" /></center><br />
-	
-	</form> 
-	</p>
-	
-	<form>
-	<p>
-		<center><h2><font color="white">OR</font></h2></center>
-		<center><input type="Button" value="ADD NEW CUSTOMER" onclick="window.location.href='http://localhost/AddCustEmp.php'" /></center><br />
 
-	</form> 
-	<form method='GET' action='Staff.php'>
-	<input type='submit' value = 'BACK'>
-	</form>
-	</p>
 
-</div>
-	
-	
-<?php include('footer.php'); ?>
+  <div class="container-contact100">
+    <div class="wrap-contact100">
+      <form class="contact100-form validate-form" action="" method="post">
+        <span class="contact100-form-title">
+          Enter Customer Details First
+        </span>
+
+        <div class="wrap-input100 validate-input" data-validate="ID is required">
+          <span class="label-input100">Customer ID</span>
+          <input class="input100" type="text" name="custid" placeholder="Enter customer ID">
+          <span class="focus-input100"></span>
+        </div>
+
+
+        <div class="container-contact100-form-btn">
+          <div class="wrap-contact100-form-btn">
+            <div class="contact100-form-bgbtn"></div>
+            <button class="contact100-form-btn">
+              <span>
+                Search
+                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <span class="contact100-form-title">
+          OR
+        </span>
+    </form>
+
+    <form class="contact100-form validate-form" action="http://localhost/AddCustEmp.php">
+        <div class="container-contact100-form-btn">
+          <div class="wrap-contact100-form-btn">
+            <div class="contact100-form-bgbtn"></div>
+            <button class="contact100-form-btn" type="submit">
+              <span>
+                Add New Customer
+                <!--<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>-->
+              </span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+<!--===============================================================================================-->
+  <script src="ContactForm/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+  <script src="ContactForm/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+  <script src="ContactForm/vendor/bootstrap/js/popper.js"></script>
+  <script src="ContactForm/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+  <script src="ContactForm/vendor/select2/select2.min.js"></script>
+  <script>
+    $(".selection-2").select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $('#dropDownSelect1')
+    });
+  </script>
+<!--===============================================================================================-->
+  <script src="ContactForm/vendor/daterangepicker/moment.min.js"></script>
+  <script src="ContactForm/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===========ContactForm/====================================================================================-->
+  <script src="ContactForm/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script src="ContactForm/js/main.js"></script>
+
 <?php 
 include("db.php");
 	
@@ -71,3 +144,8 @@ include("db.php");
 	}
 }
 ?>
+
+<form method='GET' action='Staff.php'>
+	<input type='submit' value = 'BACK'>
+</form>
+<?php include('footer.php'); ?>
