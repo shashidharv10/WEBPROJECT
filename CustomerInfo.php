@@ -157,7 +157,7 @@ include("db.php");
 }
 ?>
 
-<form method='GET' action='Staff.php'>
+<form method='GET' action='Staff.html'>
 	<input type='submit' value = 'BACK'>
 </form>
 <?php include('footer.php'); ?>

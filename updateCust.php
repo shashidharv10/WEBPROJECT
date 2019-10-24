@@ -93,7 +93,7 @@
   <script src="ContactForm/js/main.js"></script>
 
 
-<form method='GET' action='custinf.php'>
+<form method='GET' action='custinf.html'>
 <input type='submit' value = 'BACK'>
 		</form>
 <?php include('footer.php'); ?>

@@ -99,9 +99,11 @@ else {
 	<script src="Table/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
 	<script src="Table/js/main.js"></script>
-
-<form action = "Staff.php" method = "post">
-<center><input type="Submit" value="GO BACK TO HOME PAGE" /></center><br />	
+<br>
+<form action = "Staff.html" method = "post">
+		<center><button class="btn btn-success" type="submit">Continue</button></center>
+<!-- <input type="Submit" value="GO BACK TO HOME PAGE" /></center> -->
+<br />	
 </form> 
 
 <?php include("footer.php"); ?>

@@ -173,7 +173,7 @@
 <!--===============================================================================================-->
   <script src="ContactForm/js/main.js"></script>
 
-	<form method='GET' action='updatePlant.php'>
+	<form method='GET' action='updatePlant.html'>
 	<input type='submit' value = 'BACK'>
  	</form>
 	</p>

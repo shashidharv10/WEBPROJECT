@@ -23,13 +23,13 @@
 	else if($row['DID'] == 01) 
 	{
 
-         	header("location: admin.php");
+         	header("location: admin.html");
 		$_SESSION['login_user']=$username;
 
       	}
 	else {
 //         $error = "Your Login Name or Password is invalid";
-         	header("location: Staff.php");
+         	header("location: Staff.html");
 	}
    }
 ?>

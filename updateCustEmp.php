@@ -95,7 +95,7 @@
 <!--===============================================================================================-->
   <script src="ContactForm/js/main.js"></script>
 
-<form method='GET' action='custinfemp.php'>
+<form method='GET' action='custinfemp.html'>
 <input type='submit' value = 'BACK'>
 		</form>
 <?php include('footer.php'); ?>

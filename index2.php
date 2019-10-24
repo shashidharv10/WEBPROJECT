@@ -58,9 +58,11 @@ switch($_GET["action"]) {
 </HEAD>
 <BODY>
 <div id="shopping-cart">
-<center><div class="txt-heading"><h2><font color="white">SHOPPING CART</font></h2></div></center>
+<center><div class="txt-heading"><h2><font color="black">SHOPPING CART</font></h2></div></center>
 
 <a id="btnEmpty" href="index2.php?action=empty">EMPTY CART</a>
+<div class="jumbotron">
+
 <?php
 if(isset($_SESSION["cart_item"])){
     $total_quantity = 0;
@@ -148,15 +150,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ok"]))
   <?php
 } else {
 ?>
-<div class="no-records"><font color="white">YOUR CART IS EMPTY</font></div>
+<div class="no-records"><font color="blue">YOUR CART IS EMPTY</font></div>
 <?php 
 }
 ?>
 
+
 </div>
 
-<div id="product-grid">
-	<center><div class="txt-heading"><h3><font color="white">PLANTS AVAILABLE</h3></font></div></center>
+</div>
+<center>
+
+	<div id="product-grid">
+	<center><div class="txt-heading"><h3><font color="black">PLANTS AVAILABLE</h3></font></div></center>
 	<?php
 	$product_array = $db_handle->runQuery("SELECT * FROM plant ORDER BY PID ASC");
 	if (!empty($product_array)) { 
@@ -179,5 +185,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ok"]))
 	}
 	?>
 </div>
+
+</center>
+
 </BODY>
 </HTML>

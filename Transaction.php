@@ -1,19 +1,42 @@
 <?php include('header.php'); ?>
-<TITLE>Transaction</TITLE>
-        <center><h2><font color="white">FILTER BY</font></h2></center>
-        <center><h3><font color="white">CHOOSE</font></h3></center>
-        <p>
-        <form>
-                <center><input type="button" value="CUSTOMER ID" onclick="window.location.href='http://localhost/filterc.php'" /></center><br /><br />           
-                <center><input type="button" value="DATE" onclick="window.location.href='http://localhost/filterd.php'" /></center><br /><br />       
-                <center><input type="button" value="PLANT ID" onclick="window.location.href='http://localhost/filteri.php'" /></center><br /><br />       
-                <center><input type="button" value="VIEW ALL" onclick="window.location.href='http://localhost/viewall.php'" /></center><br /><br />                    
-        </form> 
-	<form method='GET' action='admin.php'>
-<input type='submit' value = 'BACK'>
-</form>
-        </p>
-
-
+<TITLE>Transaction</TITLE>r
+<br>
+        <center><h2><font color="black">FILTER BY</font></h2></center>
+        <center><h3><font color="black">CHOOSE</font></h3></center>
+<br>
+	<div class = "container">
+	<div class="row align-items-center">
+	    <div class="col">
+		<form class="form-inline" method='POST'>
+		<button type="button" class="btn btn-outline-secondary" onclick="window.location.href='http://localhost/filterc.php'">
+CUSTOMER ID</button>
+		</form>
+	    </div>
+	    <div class="col">
+		<form class="form-inline" method='POST'>
+		<button type="button" class="btn btn-outline-secondary" onclick="window.location.href='http://localhost/filterd.php'">
+DATE</button>
+		</form>
+	    </div>
+	    <div class="w-100"></div>
+	    <div class="col">
+		<form class="form-inline" method='POST'>
+		<button type="button" class="btn btn-outline-secondary" onclick="window.location.href='http://localhost/filteri.php'">
+PLANT ID</button>
+		</form>
+	    </div> 
+	    <div class="col">
+		<form class="form-inline" method='POST'>
+		<button type="button" class="btn btn-outline-secondary" onclick="window.location.href='http://localhost/viewall.php'">
+VIEW ALL</button>
+		</form>
+	    </div> 
+	 </div>           
+    <hr>                      
+    </form> 
+	<form method='GET' action='admin.html'>
+		<button type = 'submit' class = "btn btn-danger my-2 my-sm-0">BACK</button>
+	</form>
+ </div>
 <?php include('footer.php'); ?>
 
