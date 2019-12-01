@@ -12,8 +12,8 @@
 </head>
 
 <body class = "Body">
-	<nav class="navbar navbar-dark bg-light">
-		<a class="navbar-brand">NURSERY INVENTORY MANAGEMENT</a>
+<nav class="navbar navbar-inverse" style="background-color: #cca9dd; " >
+	<a class="navbar-brand" style="font-family:'Times New Roman', Times, serif; font-style: italic; font-size: 25px;">NURSERY INVENTORY MANAGEMENT</a>
 		<form class="form-inline" method='POST' action='logout.php'>
 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button>
 		</form>

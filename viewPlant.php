@@ -38,7 +38,6 @@
 			<div class='wrap-table100'>
 				<div class='table100'>
 					<span class='contact100-table-title'>
-          			PLANT DETAILS
         			</span>
 					<table>
 						<thead>

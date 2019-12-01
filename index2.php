@@ -55,6 +55,7 @@ switch($_GET["action"]) {
 <HEAD>
 <TITLE>Shopping Cart</TITLE>
 <link href="styleshop.css" type="text/css" rel="stylesheet" />
+<style>body{background-color:#ffdcf4}</style>
 </HEAD>
 <BODY>
 <div id="shopping-cart">
@@ -150,7 +151,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ok"]))
   <?php
 } else {
 ?>
-<div class="no-records"><font color="blue">YOUR CART IS EMPTY</font></div>
+<div class="no-records"><font color="black">YOUR CART IS EMPTY</font></div>
 <?php 
 }
 ?>
@@ -162,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ok"]))
 <center>
 
 	<div id="product-grid">
-	<center><div class="txt-heading"><h3><font color="black">PLANTS AVAILABLE</h3></font></div></center>
+	<center><div class="txt-heading"><h3><font color="black" >PLANTS AVAILABLE</h3></font></div></center>
 	<?php
 	$product_array = $db_handle->runQuery("SELECT * FROM plant ORDER BY PID ASC");
 	if (!empty($product_array)) { 
@@ -172,7 +173,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ok"]))
 			<form method="post" action="index2.php?action=add&PID=<?php echo $product_array[$key]["PID"]; ?>">
 			<div class="product-image"><img src="<?php echo $product_array[$key]["Image"]; ?>"></div>
 			<div class="product-tile-footer">
-			<div class="product-pid"><?php echo $product_array[$key]["PID"]; ?></div>
 			<div class="product-title"><?php echo $product_array[$key]["Name"]; ?></div>
 			<div class="product-pid"><?php echo "Quantity Left :".$product_array[$key]["Qty"]; ?></div>
 			<div class="product-price"><?php echo "Rs ".$product_array[$key]["Cost"]; ?></div>
