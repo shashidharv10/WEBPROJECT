@@ -79,7 +79,7 @@
 <!--===============================================================================================-->
   <script src="ContactForm/js/main.js"></script>
 
-<form method='GET' action='Transaction.php'>
+<form method='GET' action='Transaction.html'>
 	<input type='submit' value = 'BACK'>
 </form>
 <?php include('footer.php'); ?>

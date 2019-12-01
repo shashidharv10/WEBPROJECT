@@ -1,8 +1,8 @@
 <?php include('header.php'); ?>
-<TITLE>Transaction</TITLE>r
+<TITLE>Transaction</TITLE>
 <br>
-        <center><h2><font color="black">FILTER BY</font></h2></center>
-        <center><h3><font color="black">CHOOSE</font></h3></center>
+        <center><h2><font color="black">FILTER BY:</font></h2></center>
+        
 <br>
 	<div class = "container">
 	<div class="row align-items-center">
